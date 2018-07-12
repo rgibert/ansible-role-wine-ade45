@@ -16,35 +16,21 @@
 
     - name: run wineboot
       command: wine wineboot
+      changed_when: false
 
     - name: install corefonts and dotnet40
       command: winetricks corefonts dotnet40
+      args:
+        creates: "{{ wine_ade45_prefix }}/drive_c/windows/Microsoft.NET/Framework/v4.0.30319"
 
     - name: set ddr=gdi
       command: winetricks ddr=gdi
+      changed_when: false
 
     - name: install ADE 4.5.0
       command: "wine {{ wine_ade45_450_installer_path }} /s NSS=2"
-
-    - name: create dir to unpack latest to
-      file:
-        state: directory
-        path: "${HOME}/{{ wine_ade45_prefix }}/latest_unpacked"
-
-    - name: update to ADE 4.5.LATEST
-      unarchive:
-        src: "{{ wine_ade45_latest_installer_path }}"
-        dest: "${HOME}/{{ wine_ade45_prefix }}/latest_unpacked"
-
-    - name: copy files from LATEST to install
-      copy:
-        remote_src: yes
-        src: "${HOME}/{{ wine_ade45_prefix }}/latest_unpacked/ {{ item }}"
-        dest: "${HOME}/{{ wine_ade45_prefix }}"
-      with_items:
-        - DigitalEditions.exe
-        - log4net.dll
-        - rmsdk_wrapper.dll
+      args:
+        creates: "{{ wine_ade45_prefix }}/drive_c/Program Files/Adobe/Adobe Digital Editions 4.5"
 
   environment:
     WINEPREFIX: "{{ wine_ade45_prefix }}"
