@@ -4,12 +4,15 @@
     - name: load variables
       include_vars: "{{ ansible_os_family }}.yml"
 
-    - name: install wine
+    - name: install required packages
       package:
-        name: "{{ wine_pkg_name }}"
+        name: "{{ items }}"
         state: present
       become: yes
       become_user: root
+      with_items:
+        - "{{ wine_ade45_unzip_pkg_name}}"
+        - "{{ wine_ade45_wine_pkg_name }}"
 
     - name: run wineboot
       command: wine wineboot
