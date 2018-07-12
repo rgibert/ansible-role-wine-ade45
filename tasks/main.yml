@@ -7,7 +7,7 @@
     - name: install wine
       package:
         name: "{{ wine_pkg_name }}"
-        state: installed
+        state: present
       become: yes
       become_user: root
 
@@ -22,6 +22,11 @@
 
     - name: install ADE 4.5.0
       command: "wine {{ wine_ade45_450_installer_path }} /s NSS=2"
+
+    - name: create dir to unpack latest to
+      file:
+        state: directory
+        path: "${HOME}/{{ wine_ade45_prefix }}/latest_unpacked"
 
     - name: update to ADE 4.5.LATEST
       unarchive:
