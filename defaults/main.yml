@@ -1,0 +1,4 @@
+---
+wine_ade45_prefix: ".wine-ade45"
+wine_ade45_450_installer_path: /tmp/ADE_4.5.0_Installer.exe
+wine_ade45_latest_installer_path: /tmp/ADE_4.5_Installer.exe
