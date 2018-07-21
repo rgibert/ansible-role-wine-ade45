@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=4.5.0
+Name=Adobe Digital Editions
+Comment=Manage your ebooks
+Exec=sh -c "export WINEPREFIX={{ wine_ade45_prefix }}; cd '{{ wine_ade45_prefix }}/drive_c/Program Files/Adobe/Adobe Digital Editions 4.5'; wine 'DigitalEditions.exe'"
+Terminal=false

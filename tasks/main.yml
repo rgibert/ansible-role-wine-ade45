@@ -31,6 +31,11 @@
       args:
         creates: "{{ wine_ade45_prefix }}/drive_c/Program Files/Adobe/Adobe Digital Editions 4.5"
 
+    - name:
+      template:
+        src: "templates/wine-ade.desktop.j2"
+        dest: "~/.local/share/applications/wine-ade.desktop"
+
   environment:
     WINEPREFIX: "{{ wine_ade45_prefix }}"
     WINEARCH: "win32"
