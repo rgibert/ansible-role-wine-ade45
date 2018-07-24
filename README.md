@@ -1,6 +1,6 @@
-# WINE - Adobe Digital Editions 4.5.x
+# WINE - Adobe Digital Editions 4.5.0
 
-Ansible role to install the latest ADE 4.5.x in WINE on Linux systems
+Ansible role to install the ADE 4.5.0 in WINE on Linux systems
 
 ## Requirements
 
@@ -10,7 +10,8 @@ Ansible role to install the latest ADE 4.5.x in WINE on Linux systems
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| | | |
+| wine_ade45_prefix | ~/.wine-ade45 | Where to install ADE |
+| wine_ade45_450_installer_path | /tmp/ADE_4.5.0_Installer.exe | Path to the ADE 4.5.0 installer |
 
 ## Dependencies
 
@@ -22,7 +23,7 @@ Ansible role to install the latest ADE 4.5.x in WINE on Linux systems
 - hosts:
     - servers
   roles:
-    - role: rgibert.wine-ade45
+    - role: rgibert.wine_ade45
 ```
 
 ## License
