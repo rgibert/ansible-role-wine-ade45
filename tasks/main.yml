@@ -6,12 +6,10 @@
 
     - name: install required packages
       package:
-        name: "{{ item }}"
+        name: "[ '{{ wine_ade45_wine_pkg_name }}', '{{ wine_ade45_winetricks_pkg_name }}' ]"
         state: present
       become: yes
       become_user: root
-      with_items:
-        - "{{ wine_ade45_wine_pkg_name }}"
 
     - name: run wineboot
       command: wine wineboot
